@@ -9,7 +9,6 @@ public class ScreenFlash : MonoBehaviour
 
     private void Start()
     {
-        
         volume = GetComponent<Volume>();
         if (volume != null)
         {
@@ -19,6 +18,7 @@ public class ScreenFlash : MonoBehaviour
 
     private void Update()
     {
+        // wenn Timer läuft -> Effekt langsam wieder ausblenden
         if (flashTimer > 0f)
         {
             flashTimer -= Time.unscaledDeltaTime; 
@@ -27,6 +27,7 @@ public class ScreenFlash : MonoBehaviour
                 volume.weight = Mathf.Lerp(0f, 1f, flashTimer / flashDuration);
             }
         }
+        // sicherstellen Effekt komplett aus wenn Timer abgelaufen
         else if (volume != null && volume.weight > 0f)
         {
             volume.weight = 0f; 

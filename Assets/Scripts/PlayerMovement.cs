@@ -132,6 +132,11 @@ public class PlayerMovement : MonoBehaviour
             else
             {
                 sideAttackCounter = attackDuration;
+                // Trigger für die Side-Attack-Animation auslösen
+                if (anim != null)
+                {
+                    anim.SetTrigger("SideAttack");
+                }
             }
         }
 
